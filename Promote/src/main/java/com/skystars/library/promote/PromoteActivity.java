@@ -151,15 +151,15 @@ public class PromoteActivity extends AppCompatActivity {
 //
         recycler_view.setAdapter(adapterWrapper); // setting an AdmobExpressRecyclerAdapterWrapper to a RecyclerView
 //
-        adapter.setOnItemClickListener(new RecyclerExampleAdapter.OnRecyclerViewItemClickListener(){
-                            @Override
-                            public void onItemClick(View view , int data){
-                                Log.e("click","" + data);
-                                Uri uri = Uri.parse(mList.get(data).getUrl());
-                                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                                startActivity(intent);
-                            }
-                        });
+//        adapter.setOnItemClickListener(new RecyclerExampleAdapter.OnRecyclerViewItemClickListener(){
+//                            @Override
+//                            public void onItemClick(View view , int data){
+//                                Log.e("click","" + data);
+//                                Uri uri = Uri.parse(mList.get(data).getUrl());
+//                                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//                                startActivity(intent);
+//                            }
+//                        });
 //
 //        //adding a collection of data to your adapter and rising the data set changed event
         adapter.addAll(mList);
