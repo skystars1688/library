@@ -13,6 +13,7 @@ import android.view.View;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.NativeExpressAdView;
 import com.google.gson.Gson;
+import com.skystars.library.admobadapter.AdmobRecyclerAdapterWrapper;
 import com.skystars.library.admobadapter.expressads.AdmobExpressRecyclerAdapterWrapper;
 
 import java.io.IOException;
@@ -120,16 +121,17 @@ public class PromoteActivity extends AppCompatActivity {
             }
         });
     }
-
+    AdmobExpressRecyclerAdapterWrapper adapterWrapper;
+    //AdmobRecyclerAdapterWrapper adapterWrapper;
     private void initRecyclerViewItems(final List<PromoteBean> mList) {
 //        //creating your adapter, it could be a custom adapter as well
         RecyclerExampleAdapter adapter  = new RecyclerExampleAdapter(this);
 //
-        AdmobExpressRecyclerAdapterWrapper adapterWrapper = new AdmobExpressRecyclerAdapterWrapper(this);
+        adapterWrapper = new AdmobExpressRecyclerAdapterWrapper(this);
 //        //TODO it's important to set your test device ID (you can find it in LogCat after launching the debug session i.e. by word "test")
 //        //if you launch app on emulator and experience some troubles
 //        // try passing the constant AdRequest.DEVICE_ID_EMULATOR
-        adapterWrapper.setTestDeviceId(getString(R.string.testDeviceID));//set an unique test device ID
+//        adapterWrapper.setTestDeviceId(getString(R.string.testDeviceID));//set an unique test device ID
 //        //TODO set the custom ads layout if you wish. NOTE you have to set your admob unit ID in this XML.
 //        //It doesn't work for me if I set the unit ID in code with the method setAdUnitID() so it seems to be a bug
 //        //adapterWrapper.setExpressAdsLayoutId(R.layout.adexpresslistview_item);
@@ -142,27 +144,34 @@ public class PromoteActivity extends AppCompatActivity {
 //        //You should set it according to the Admob's policies and rules which says not to
 //        //display more than one ad block at the visible part of the screen,
 //        // so you should choose this parameter carefully and according to your item's height and screen resolution of a target devices
-        adapterWrapper.setNoOfDataBetweenAds(3);
+        adapterWrapper.setNoOfDataBetweenAds(4);
 //
 //        //It's a test admob ID. Please replace it with a real one only when you will be ready to deploy your product to the Release!
 //        //Otherwise your Admob account could be banned
-//        //String admobUnitId = getResources().getString(R.string.banner_admob_unit_id);
-//        //adapterWrapper.setAdmobReleaseUnitId(admobUnitId);
+//        String admobUnitId = getResources().getString(R.string.banner_admob_unit_id);
+//        adapterWrapper.setAdmobReleaseUnitId(admobUnitId);
 //
         recycler_view.setAdapter(adapterWrapper); // setting an AdmobExpressRecyclerAdapterWrapper to a RecyclerView
 //
-//        adapter.setOnItemClickListener(new RecyclerExampleAdapter.OnRecyclerViewItemClickListener(){
-//                            @Override
-//                            public void onItemClick(View view , int data){
-//                                Log.e("click","" + data);
-//                                Uri uri = Uri.parse(mList.get(data).getUrl());
-//                                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-//                                startActivity(intent);
-//                            }
-//                        });
+        adapter.setOnItemClickListener(new RecyclerExampleAdapter.OnRecyclerViewItemClickListener(){
+                            @Override
+                            public void onItemClick(View view , int data){
+                                Log.e("click","" + data);
+                                Uri uri = Uri.parse(mList.get(data).getUrl());
+                                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                                startActivity(intent);
+                            }
+                        });
 //
 //        //adding a collection of data to your adapter and rising the data set changed event
         adapter.addAll(mList);
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        adapterWrapper.destroyAds();
     }
 }

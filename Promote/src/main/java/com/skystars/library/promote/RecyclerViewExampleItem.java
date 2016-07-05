@@ -15,14 +15,15 @@ public class RecyclerViewExampleItem extends FrameLayout {
 
     public RecyclerViewExampleItem(Context context) {
         super(context);
-        inflate(context, R.layout.item_list, this);
+        inflate(context, R.layout.promote_item, this);
         this.context = context;
         vTitle = ((TextView) findViewById(R.id.txtTitle));
         vDesc = ((TextView) findViewById(R.id.txtDesc));
         ivIcon = (ImageView) findViewById(R.id.ivIcon);
     }
 
-    public void bind(PromoteBean ci){
+    public void bind(PromoteBean ci, int position){
+        setTag(position);
         vTitle.setText(ci.getTitle());
         vDesc.setText(ci.getDesc());
 

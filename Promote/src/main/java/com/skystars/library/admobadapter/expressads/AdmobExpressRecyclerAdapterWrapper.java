@@ -19,6 +19,7 @@ package com.skystars.library.admobadapter.expressads;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,8 @@ import com.skystars.library.admobadapter.AdmobFetcherBase;
 import com.skystars.library.admobadapter.RecyclerViewAdapterBase;
 import com.skystars.library.admobadapter.ViewWrapper;
 import com.skystars.library.promote.R;
+
+import java.util.logging.Logger;
 
 /**
  * Adapter that has common functionality for any adapters that need to show ads in-between

@@ -61,7 +61,7 @@ public class PromoteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_list, viewGroup, false);
+        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.promote_item, viewGroup, false);
         itemView.setOnClickListener(this);
         return new PromoteViewHolder(itemView);
     }
