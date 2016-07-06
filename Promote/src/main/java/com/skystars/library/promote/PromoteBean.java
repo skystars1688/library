@@ -8,17 +8,28 @@ package com.skystars.library.promote;
  * 修改备注：
  */
 public class PromoteBean {
+    private String mpackage;
     private String title;
     private String desc;
     private String icon;
     private String url;
 
-    public PromoteBean(String title, String desc, String icon, String url) {
+    public PromoteBean(String mpackage,String title, String desc, String icon, String url) {
+        this.mpackage = mpackage;
         this.title = title;
         this.desc = desc;
         this.icon = icon;
         this.url = url;
     }
+
+    public String getMPackage() {
+        return mpackage;
+    }
+
+    public void setMPackage(String value) {
+        this.mpackage = value;
+    }
+
 
     public String getTitle() {
         return title;

@@ -34,13 +34,25 @@ import okhttp3.Response;
  * 修改备注：
  */
 public class PromoteActivity extends AppCompatActivity {
+    public static final String URL = "url";
     RecyclerView recycler_view;
     PromoteAdapter mAdapter;
+    private String url;
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putCharSequence(URL, url);
+        super.onSaveInstanceState(outState);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_promote);
+
+        if(savedInstanceState != null){
+            url = savedInstanceState.getString(URL);
+        }
+        url = getIntent().getStringExtra(URL);
 
         getSupportActionBar().setTitle(R.string.title_promote);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
@@ -72,7 +84,7 @@ public class PromoteActivity extends AppCompatActivity {
         final Gson gson = new Gson();
 
         OkHttpClient mOkHttpClient=new OkHttpClient();
-        Request.Builder requestBuilder = new Request.Builder().url("http://skystars.tw/promote.json");
+        Request.Builder requestBuilder = new Request.Builder().url(url);
         requestBuilder.method("GET",null);
         Request request = requestBuilder.build();
         Call mcall= mOkHttpClient.newCall(request);
