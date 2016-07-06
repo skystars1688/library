@@ -37,6 +37,7 @@
                 android:id="@+id/txtDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/view_margin"
                 android:maxLines="3"
                 android:text="使用最特別的主題更換器"
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
@@ -45,6 +46,8 @@
                 android:id="@+id/txtType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/view_margin"
+                android:layout_marginBottom="@dimen/view_margin"
                 android:gravity="right"
                 android:maxLines="1"
                 android:text="兔費"
