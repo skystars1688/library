@@ -2,6 +2,8 @@ package com.skystars.library;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
@@ -61,7 +63,14 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this,PromoteActivity.class);
                 intent.putExtra(PromoteActivity.URL,"http://skystars.tw/promote.json");
-                startActivity(intent);
+                //startActivity(intent);
+                //overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+
+                ActivityOptionsCompat options =
+                        ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this,
+                                v.findViewById(R.id.txtTitle), "test");
+
+                ActivityCompat.startActivity(MainActivity.this, intent, options.toBundle());
             }
         });
     }
