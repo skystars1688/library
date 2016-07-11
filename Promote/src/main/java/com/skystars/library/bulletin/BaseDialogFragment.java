@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatDialogFragment;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -37,7 +36,7 @@ public abstract class BaseDialogFragment extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         View view = LayoutInflater.from(getActivity()).inflate(mLayout, null);
         TextView mContent = (TextView)view.findViewById(R.id.txtContent);
-        mContent.setText(Html.fromHtml(getContentText()));
+        mContent.setText(getContentText());
 
         builder.setView(view).setPositiveButton(getOkText(), new DialogInterface.OnClickListener() {
             @Override

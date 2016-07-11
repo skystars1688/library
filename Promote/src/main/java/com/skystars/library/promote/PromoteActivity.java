@@ -86,7 +86,9 @@ public class PromoteActivity extends AppCompatActivity {
         OkHttpClient mOkHttpClient=new OkHttpClient();
         Request.Builder requestBuilder = new Request.Builder().url(url);
         requestBuilder.method("GET",null);
-        Request request = requestBuilder.build();
+        Request request = requestBuilder
+                .header("User-Agent","Mozilla/5.0 (Windows NT 6.1; WOW64; rv:42.0) Gecko/20100101 Firefox/42.0")
+                .build();
         Call mcall= mOkHttpClient.newCall(request);
         mcall.enqueue(new Callback() {
             @Override
