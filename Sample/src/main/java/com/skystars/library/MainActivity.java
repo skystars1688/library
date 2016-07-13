@@ -10,7 +10,6 @@ import android.view.View;
 
 import com.skystars.library.bulletin.BulletinDialog;
 import com.skystars.library.promote.PromoteActivity;
-import com.skystars.library.utils.VersionUtils;
 
 import java.io.IOException;
 
@@ -64,17 +63,14 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this,PromoteActivity.class);
                 intent.putExtra(PromoteActivity.URL,"http://skystars.tw/promote.json");
+                //startActivity(intent);
+                //overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
 
-                if(VersionUtils.chedkVersion()) {
-                    ActivityOptionsCompat options =
-                            ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this,
-                                    v.findViewById(R.id.txtTitle), "test");
+                ActivityOptionsCompat options =
+                        ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this,
+                                v.findViewById(R.id.txtTitle), "test");
 
-                    ActivityCompat.startActivity(MainActivity.this, intent, options.toBundle());
-                }else{
-                    startActivity(intent);
-                    overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
-                }
+                ActivityCompat.startActivity(MainActivity.this, intent, options.toBundle());
             }
         });
     }
